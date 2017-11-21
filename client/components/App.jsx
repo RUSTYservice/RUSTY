@@ -11,16 +11,14 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mockedServerRetrievedData: {},
-      showProfile: true
     };
 
     this.onChange = this.onChange.bind(this);
     this.submitData = this.submitData.bind(this);
   }
 
-
   onChange (e) {
+    console.log('on change called')
     var tempState={};
     tempState[e.target.name]=e.target.value;
     this.setState(
@@ -48,10 +46,29 @@ class App extends React.Component {
     */
   }
 
-  submitData () {
+  submitData (dataToUpstream) {
 
     var that=this;
-    console.log('this in app submit Data= ',this)
+
+    console.log('in app submit Data state = ',this.state)
+
+    var dataReferencer={
+      businessSignupUserInput : ['signup-business-email','signup-business-name','signup-business-password','signup-business-pet','signup-business-zip'],
+      petOwnerSignupUserInput : ['signup-petowner-email','signup-petowner-name','signup-petowner-password','signup-petowner-pet','signup-petowner-zip']
+    };
+
+    function CreateJSONWithUserIntendedData (dataToUpstream) {
+
+      var userIntendedData = {}
+      dataReferencer[dataToUpstream].map(userInputedPropKey => {
+
+        userIntendedData[userInputedPropKey] = that.state[userInputedPropKey] // why are we loosing contect of this here
+      })
+      return JSON.stringify(userIntendedData)
+    }
+
+    console.log(CreateJSONWithUserIntendedData(dataToUpstream))
+
     /*
     fetch('/api/dogowner/signup', {
       method: 'POST',
@@ -92,38 +109,43 @@ class App extends React.Component {
 
     return (
       <div className="primary-layout">
-      <div>
-      <PrimaryHeader />
-      </div>
-      <div>
-      <BrowserRouter>
-      <div>
-      <ul>
-      <li><NavLink to="/login" activeClassName="active">Login</NavLink></li>
-      <li><NavLink to="/signup" activeClassName="active">Sign up</NavLink></li>
-      </ul>
-      <Switch>
-      <Route path="/login" component={Login} />
-      <Route path="/signup" component={Signup} />
-      </Switch>
-      </div>
-      </BrowserRouter>
-      </div>
-      <div>
-      <h2> in Nick temp routing </h2>
-
-      { this.state.showProfile ? <Signup message={this.props.message} parent={this}/> : <Profile parent={this}/> }
-      </div>
+        <div>
+          <PrimaryHeader />
+        </div>
+        <div>
+          <BrowserRouter>
+            <div>
+              <ul>
+              <li><NavLink to="/login" activeClassName="active">Login</NavLink></li>
+              <li><NavLink to="/signup" activeClassName="active">Sign up</NavLink></li>
+              </ul>
+              <Switch>
+                <Route path="/login" component={Login} />
+                <Route path="/signup" render={()=> <Signup app={this} test="eeeeee" />} />
+              </Switch>
+            </div>
+          </BrowserRouter>
+        </div>
       </div>
     );
   }
+
 
 }
 
 export default App;
 
 
-/*     </div>
+/*     
+
+<div>
+<h2> in Nick temp routing </h2>
+
+{ this.state.showProfile ? <Signup message={this.props.message} parent={this}/> : <Profile parent={this}/> }
+</div>
+
+
+</div>
 <div>
   <h2> in Nickemp routing </h2>
 
