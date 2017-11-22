@@ -43,7 +43,6 @@ class SearchResults extends React.Component {
                 profileImg={business.profileImg}
       />);
     };
-
     const businesses = this.state.businesses;
     const legend = {
       1: 'All Local Businesses',

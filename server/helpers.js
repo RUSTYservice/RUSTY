@@ -86,7 +86,17 @@ const validateLogin = (attempt, stored, callback) => {
       return console.error('Error validating password:', err);
     }
     if (response) {
+<<<<<<< HEAD
       callback(stored);
+=======
+      req.session.regenerate((err) => {
+        if (err) {
+          return console.error('Error regenerating session:', err);
+        }
+        req.session.user = response;
+        callback();
+      });
+>>>>>>> including Ben's changes
     }
   });
 };

@@ -7,7 +7,7 @@
     "node": "6.11.1"
   },
   "scripts": {
-    "start": "nodemon --inspect server/index.js",
+    "start": "nodemon --inspect testindex.js",
     "heroku-postbuild": "webpack",
     "dev": "webpack-dev-server",
     "build": "webpack -d --hot",
