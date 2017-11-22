@@ -2,9 +2,9 @@ import React from 'react';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 
-export default class DropDownMenuSimpleExample extends React.Component {
-  constructor() {
-    super();
+class SearchMenu extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
       value: 1,
     };
@@ -27,3 +27,5 @@ export default class DropDownMenuSimpleExample extends React.Component {
     );
   }
 }
+
+export default SearchMenu;
