@@ -56,17 +56,17 @@ app.post('/api/business/signup', bodyParser(), (req, res) => {
 /*
 // run this to add test user
 helpers.addPetOwner({
-  pet: 'rusty',
-  username: 'krista',
-  profileImg: 'https://scontent.fewr1-1.fna.fbcdn.net/v/t1.0-9/11898737_10152912694381150_8438824989009173766_n.jpg?oh=5552c729aef988b48a95fd9585f8d8db&oe=5A9CA597',
-  email: 'abrakd@yahoo.com',
-  password: 'moo',
-  street: '22 abc street',
-  city: 'Portland',
-  state: 'OR',
-  zipcode: '97203'
-  },
-  (data) => console.log(data, 'added'));
+pet: 'rusty',
+username: 'krista',
+profileImg: 'https://scontent.fewr1-1.fna.fbcdn.net/v/t1.0-9/11898737_10152912694381150_8438824989009173766_n.jpg?oh=5552c729aef988b48a95fd9585f8d8db&oe=5A9CA597',
+email: 'abrakd@yahoo.com',
+password: 'moo',
+street: '22 abc street',
+city: 'Portland',
+state: 'OR',
+zipcode: '97203'
+},
+(data) => console.log(data, 'added'));
 */
 
 
@@ -107,6 +107,22 @@ app.get('/api/business/profile', (req, res) => {
   }
 });
 
+app.get('/api/businessListings', (req, res) => {
+  db.Business.find({}, (err, businesses) => {
+    if (err) {
+      return console.error(err);
+    }
+    res.send(businesses);
+  });
+});
+
+app.get('/*', (req, res) => {
+  if (req.session && req.session.user) {
+    res.redirect(`/profile/${req.session.user}`);
+  } else {
+    res.redirect('/');
+  }
+});
 //app.post('/api/business/login')
 // app.get and validate business credentials
 
@@ -115,10 +131,6 @@ app.get('/api/business/profile', (req, res) => {
 
 // app.get('/api/business/profile/')
 // app.get('/api/dogowner/profile/')
-
-
-
-
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);

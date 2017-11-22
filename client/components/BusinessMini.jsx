@@ -39,19 +39,15 @@ class BusinessMini extends React.Component {
     return (
       <div>
         <PrimaryHeader />
-        <Card>
-          <CardHeader title={this.props.username} />
           <h1>Business Mini Listing</h1>
-          <p>{this.props.username}</p>
-          <p>{this.props.promotion}</p>
-          <img src={this.props.image} />
+          <p>{this.props.businessName}</p>
+          <img src={this.props.profileImg} />
           {this.renderWag(0)}
           {this.renderWag(1)}
           {this.renderWag(2)}
           {this.renderWag(3)}
           {this.renderWag(4)}
           <input value={this.state.reviewText} onChange={event => this.handleChange(event)}></input>
-        </Card>
       </div>
     );
   }

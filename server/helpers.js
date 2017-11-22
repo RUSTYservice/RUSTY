@@ -26,6 +26,7 @@ const addPetOwner = (data, callback) => {
   });
 };
 
+const hashPassword =
 const addRating = function() {
 }
 
@@ -37,7 +38,7 @@ const addBusiness = function() {
 const isPetOwnerInDatabase = (petOwner, callback) => {
   db.User.findOne({ email: petOwner.email }, (err, result) => {
     if (err) {
-      console.log('Error finding user in db:', err);
+      return console.error('Error finding user in db:', err);
     } else {
       callback(result);
     }
@@ -47,7 +48,7 @@ const isPetOwnerInDatabase = (petOwner, callback) => {
 const isBusinessInDatabase = (business, callback) => {
   db.Business.findOne({ email: business.email }, (err, result) => {
     if (err) {
-      console.log('Error finding user in db:', err);
+      return console.error('Error finding user in db:', err);
     } else {
       callback(result);
     }
@@ -58,15 +59,15 @@ const isBusinessInDatabase = (business, callback) => {
 const validateLogin = (credentials, callback) => {
   bcrypt.compare(credentials.password, result.password, (err, response) => {
     if (err) {
-      console.log('Error validating password:', err);
-    } else {
+      return console.error('Error validating password:', err);
+    }
+    if (response) {
       req.session.regenerate((err) => {
         if (err) {
-          console.error('Error regenerating session:', err);
-        } else {
-          req.session.user = response;
-          callback();
+          return console.error('Error regenerating session:', err);
         }
+        req.session.user = response;
+        callback();
       });
     }
   });

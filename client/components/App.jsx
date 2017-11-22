@@ -5,7 +5,9 @@ import Login from './Login.jsx';
 import Signup from './Signup.jsx';
 import BusinessProfile from './BusinessProfile.jsx';
 import PetOwnerProfile from './PetOwnerProfile.jsx';
+import SearchResults from './SearchResults.jsx';
 import PrimaryHeader from './PrimaryHeader.jsx';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
 class App extends React.Component {
@@ -129,14 +131,18 @@ class App extends React.Component {
         </div>
         <div>
           <BrowserRouter>
+            <MuiThemeProvider>
             <div>
               <NavLink to="/login" activeClassName="active">Login</NavLink><br></br>
               <NavLink to="/signup" activeClassName="active">Sign up</NavLink><br></br>
+              <NavLink to="/search" activeClassName="active">Search</NavLink><br></br>
               <Switch>
                 <Route path="/login" render={() => (<Login authenticateLogin={this.authenticateLogin} />)} />
                 <Route path="/signup" render={() => (<Signup app={this} test="eeeeee" />)} />
+                <Route path="/search" render={() => (<SearchResults app={this} test="eeeeee" />)} />
               </Switch>
             </div>
+            </MuiThemeProvider>
           </BrowserRouter>
         </div>
       </div>
