@@ -66,7 +66,6 @@ typings/
 
 
 # bundle
-dist/index_bundle.js
+./dist/index_bundle.js
 
-# client index
-client/index.html
+package-lock.json

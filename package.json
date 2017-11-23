@@ -7,7 +7,7 @@
     "node": "6.11.1"
   },
   "scripts": {
-    "start": "nodemon --inspect server/index.js ",
+    "start": "nodemon --inspect testindex.js",
     "heroku-postbuild": "webpack",
     "dev": "webpack-dev-server",
     "build": "webpack -d --hot",
@@ -44,10 +44,13 @@
     "jquery": "^3.2.1",
     "material-ui": "^0.19.4",
     "mongoose": "^4.9.6",
+    "pg": "^7.4.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "react-router-dom": "^4.2.2",
     "request": "^2.81.0",
+    "sequelize": "^4.22.15",
+    "sequelize-cli": "^3.1.0",
     "webpack": "^3.8.1"
   }
 }

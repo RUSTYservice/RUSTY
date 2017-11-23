@@ -9,7 +9,6 @@ import SearchResults from './SearchResults.jsx';
 import PrimaryHeader from './PrimaryHeader.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -73,10 +72,24 @@ class App extends React.Component {
 
     console.log(CreateJSONWithUserIntendedData(dataToUpstream));
 
+    var modifier = '';
+    if (dataToUpstream === 'businessSignupUserInput') {
+      modifier = '/business';
+    } else if (dataToUpstream === 'petOwnerSignupUserInput') {
+      modifier = '/petOwner';
+    }
+
+    axios.post('/api' + modifier + '/signup', {
+    })
+         .then()
+         .catch((error) => {
+           // alert error
+           return console.error(error);
+         });
     /*
-       fetch('/api/dogowner/signup', {
-       method: 'POST',
-       headers: {
+    fetch('/api/dogowner/signup', {
+      method: 'POST',
+      headers: {
        'Accept': 'application/json',
        'Content-Type': 'application/json',
        },
@@ -115,7 +128,7 @@ class App extends React.Component {
         // change this.state.isLoggedIn to true
         this.setState({
           isLoggedIn: true
-        })
+        });
       })
       .catch((error) => {
         // alert error

@@ -48,7 +48,7 @@ let ratingSchema = mongoose.Schema({
   wags: Number,
   description: String,
   user_id: Number,
-  business_id: Number,
+  business_id: Number
 });
 
 let User = mongoose.model('User', userSchema);
