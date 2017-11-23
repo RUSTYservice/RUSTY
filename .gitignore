@@ -67,6 +67,3 @@ typings/
 
 # bundle
 index_bundle.js
-
-# client index
-client/index.html
