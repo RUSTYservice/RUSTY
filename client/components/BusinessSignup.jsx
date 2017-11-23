@@ -5,13 +5,14 @@ let BusinessSignup = (props) => {
 	console.log('propsfrom app =',props);
 	console.log("in sign up before return statement");
 	let onChange=props.app.onChange;
+	$('.test').text('hey');
 	let onSubmit= () => {
 		props.app.submitData('businessSignupUserInput');
 	}
 	return (
 		<div>
-			<h2> in business sign upcomponent</h2>
-		
+			<h2 className="test"> in business sign upcomponent</h2>
+			
 			Email : <input type="text" name="signup-business-email" onChange={onChange}></input><br/>
 			Name : <input type="text" name="signup-business-name" onChange={onChange}></input><br/>
 			Zip : <input type="text" name="signup-business-zip" onChange={onChange} ></input><br/>
