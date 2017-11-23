@@ -22,7 +22,7 @@ let userSchema = mongoose.Schema({
   street: String,
   city: String,
   state: String,
-  zip: String
+  zip: String,
 });
 
 
@@ -40,7 +40,7 @@ let businessSchema = mongoose.Schema({
   street: String,
   city: String,
   state: String,
-  zip: String
+  zip: String,
 });
 
 let ratingSchema = mongoose.Schema({
