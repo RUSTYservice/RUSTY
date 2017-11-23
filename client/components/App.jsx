@@ -72,10 +72,24 @@ class App extends React.Component {
 
     console.log(CreateJSONWithUserIntendedData(dataToUpstream));
 
+    var modifier = '';
+    if (dataToUpstream === 'businessSignupUserInput') {
+      modifier = '/business';
+    } else if (dataToUpstream === 'petOwnerSignupUserInput') {
+      modifier = '/petOwner';
+    }
+
+    axios.post('/api' + modifier + '/signup', {
+    })
+         .then()
+         .catch((error) => {
+           // alert error
+           return console.error(error);
+         });
     /*
-       fetch('/api/dogowner/signup', {
-       method: 'POST',
-       headers: {
+    fetch('/api/dogowner/signup', {
+      method: 'POST',
+      headers: {
        'Accept': 'application/json',
        'Content-Type': 'application/json',
        },
