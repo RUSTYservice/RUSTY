@@ -1,5 +1,3 @@
 {
-	"undefined": "localhost/rustydb",
-	"dev": "localhost/DEV_DB_NAME",
-	"prod": "process.env.MONGODB_URI"
+	"undefined": "localhost/rustydb"
 }

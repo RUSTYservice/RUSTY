@@ -11,7 +11,10 @@ db.once('open', function () {
 let userSchema = mongoose.Schema({
   // _id: auto-gen
   pet: String,
-  username: String,
+  username: {
+    type: String,
+    unique: true,
+  },
   email: {
     type: String,
     unique: true,
@@ -22,7 +25,7 @@ let userSchema = mongoose.Schema({
   street: String,
   city: String,
   state: String,
-  zip: String
+  zip: String,
 });
 
 
@@ -40,7 +43,7 @@ let businessSchema = mongoose.Schema({
   street: String,
   city: String,
   state: String,
-  zip: String
+  zip: String,
 });
 
 let ratingSchema = mongoose.Schema({
