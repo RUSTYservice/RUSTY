@@ -67,5 +67,3 @@ typings/
 
 # bundle
 index_bundle.js
-
-package-lock.json
