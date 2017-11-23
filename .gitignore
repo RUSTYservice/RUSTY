@@ -73,9 +73,3 @@ dist/index_bundle.js
 client/index.html
 
 package-lock.json
-
-seedql.js
-testindex.js
-models/
-controllers/
-config/
