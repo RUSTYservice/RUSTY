@@ -20,7 +20,19 @@ class App extends React.Component {
     this.submitData = this.submitData.bind(this);
     this.authenticateLogin = this.authenticateLogin.bind(this);
   }
-
+/*
+  componentDidMount() {
+    axios.get('/api/landing')
+         .then((response) => {
+           if (response.data === 'petOwner' || response.data === 'business') {
+             this.setState({ isLoggedIn: response.data });
+           }
+         })
+         .catch((err) => {
+           return console.error(err);
+         });
+  }
+*/
   onChange(e) {
     console.log('on change called');
     let tempState = {};
@@ -28,13 +40,13 @@ class App extends React.Component {
     this.setState(tempState);
   }
   /*
-  toggleView() {
-    //  console.log('in toggle View //  showProfile = ',this.state );
-    //  console.log('in toggle View //  showProfile = ',this.state.showProfile );
-    var newCondition = !this.state.showProfile;
-    this.setState({ showProfile : newCondition });
-  }
-  */
+     toggleView() {
+     //  console.log('in toggle View //  showProfile = ',this.state );
+     //  console.log('in toggle View //  showProfile = ',this.state.showProfile );
+     var newCondition = !this.state.showProfile;
+     this.setState({ showProfile : newCondition });
+     }
+   */
 
   fetchData() {
     console.log('inside fetch data');
@@ -82,14 +94,14 @@ class App extends React.Component {
     axios.post('/api' + modifier + '/signup', {
     })
          .then()
-         .catch((error) => {
+         .catch((err) => {
            // alert error
-           return console.error(error);
+           return console.error(err);
          });
     /*
-    fetch('/api/dogowner/signup', {
-      method: 'POST',
-      headers: {
+       fetch('/api/dogowner/signup', {
+       method: 'POST',
+       headers: {
        'Accept': 'application/json',
        'Content-Type': 'application/json',
        },
@@ -124,16 +136,16 @@ class App extends React.Component {
       password: `${pw}`,
       userType: `${userType}`
     })
-      .then((response) => {
-        // change this.state.isLoggedIn to true
-        this.setState({
-          isLoggedIn: true
-        });
-      })
-      .catch((error) => {
-        // alert error
-        console.log(error);
-      });
+         .then((response) => {
+           // change this.state.isLoggedIn to true
+           this.setState({
+             isLoggedIn: true
+           });
+         })
+         .catch((error) => {
+           // alert error
+           console.log(error);
+         });
   }
 
   render() {
@@ -145,16 +157,40 @@ class App extends React.Component {
         <div>
           <BrowserRouter>
             <MuiThemeProvider>
-            <div>
-              <NavLink to="/login" activeClassName="active">Login</NavLink><br></br>
-              <NavLink to="/signup" activeClassName="active">Sign up</NavLink><br></br>
-              <NavLink to="/search" activeClassName="active">Search</NavLink><br></br>
-              <Switch>
-                <Route path="/login" render={() => (<Login authenticateLogin={this.authenticateLogin} />)} />
-                <Route path="/signup" render={() => (<Signup app={this} test="eeeeee" />)} />
-                <Route path="/search" render={() => (<SearchResults app={this} test="eeeeee" />)} />
-              </Switch>
-            </div>
+              <div>
+                <NavLink to="/login" activeClassName="active">Login</NavLink><br></br>
+          <NavLink to="/signup" activeClassName="active">Sign up</NavLink><br></br>
+          <NavLink to="/search" activeClassName="active">Search</NavLink><br></br>
+          <Switch>
+            <Route path="/login" render={() => (
+              this.state.isLoggedIn ? (
+                <Redirect to={'/' + isLoggedIn + '/profile'} />
+              ) : (
+                <Login authenticateLogin={this.authenticateLogin} />
+              )
+            )} />
+            <Route path="/signup" render={() => (
+              this.state.isLoggedIn ? (
+                <Redirect to={'/' + isLoggedIn + '/profile'} />
+              ) : (
+                <Signup app={this} test="eeeeee" />
+              )
+            )} />
+            <Route path="/search" render={() => (
+              this.state.isLoggedIn ? (
+                <Redirect to={'/' + isLoggedIn + '/profile'} />
+              ) : (
+                <SearchResults app={this} test="eeeeee" />
+              )
+            )} />
+            <Route path="/petOwner/profile" render={() => (
+              <PetOwnerProfile />
+            )} />
+            <Route path="/business/profile" render={() => (
+              <BusinessProfile />
+            )} />
+          </Switch>
+              </div>
             </MuiThemeProvider>
           </BrowserRouter>
         </div>
