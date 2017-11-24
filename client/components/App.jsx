@@ -20,7 +20,7 @@ class App extends React.Component {
     this.submitData = this.submitData.bind(this);
     this.authenticateLogin = this.authenticateLogin.bind(this);
   }
-
+/*
   componentDidMount() {
     axios.get('/api/landing')
          .then((response) => {
@@ -32,7 +32,7 @@ class App extends React.Component {
            return console.error(err);
          });
   }
-
+*/
   onChange(e) {
     console.log('on change called');
     let tempState = {};
@@ -94,9 +94,9 @@ class App extends React.Component {
     axios.post('/api' + modifier + '/signup', {
     })
          .then()
-         .catch((error) => {
+         .catch((err) => {
            // alert error
-           return console.error(error);
+           return console.error(err);
          });
     /*
        fetch('/api/dogowner/signup', {

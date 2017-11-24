@@ -92,6 +92,6 @@ app.get('/*', (req, res) => {
 
 db.sequelize.sync().then(function() {
   http.createServer(app).listen(app.get('port'), function() {
-    console.log('express listening on ', app.get('port'));
+    console.log('express listening on', app.get('port'));
   });
 });
