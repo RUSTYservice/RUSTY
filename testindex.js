@@ -4,16 +4,17 @@ const path = require('path');
 const db = require('./models');
 const http = require('http');
 const bodyParser = require('body-parser');
-const controllers = require('./controllers/controllers.js')
+const controllers = require('./controllers/controllers.js');
 
 const app = express();
 
 app.set('port', process.env.PORT || 3000);
-app.use(express.static(path.join(__dirname, 'dist')))
+app.use(express.static(path.join(__dirname, 'dist')));
 app.use(session({
   secret: 'meow',
   resave: false,
   saveUninitialized: false,
+  cookie: {}
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
