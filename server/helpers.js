@@ -29,10 +29,6 @@ const addPetOwner = (data, callback) => {
   });
 };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 5c851c3cb2f2f3f8743d51122391c697111f9553
 const addBusiness = (data, callback) => {
   bcrypt.hash(data.password, 10, (err, hash) => {
     let newBusiness = new db.Business({
@@ -49,14 +45,6 @@ const addBusiness = (data, callback) => {
     writeToDatabase(newBusiness, callback);
   });
 };
-<<<<<<< HEAD
-=======
-const hashPassword =
-const addRating = function() {
-}
->>>>>>> d645d198900d772b0f9cc5d715b6a116291be389
-=======
->>>>>>> 5c851c3cb2f2f3f8743d51122391c697111f9553
 
 const writeToDatabase = (document, callback) => {
   document.save()
@@ -69,7 +57,7 @@ const writeToDatabase = (document, callback) => {
 };
 
 const addRating = function() {
-}
+};
 
 const isPetOwnerInDatabase = (petOwner, callback) => {
   db.User.findOne({ email: petOwner.email }, (err, result) => {
