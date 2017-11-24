@@ -4,28 +4,16 @@ const path = require('path');
 const db = require('./models');
 const http = require('http');
 const bodyParser = require('body-parser');
-<<<<<<< HEAD
 const controllers = require('./controllers/controllers.js');
-=======
-const controllers = require('./controllers/controllers.js')
->>>>>>> 5c851c3cb2f2f3f8743d51122391c697111f9553
 
 const app = express();
-
 app.set('port', process.env.PORT || 3000);
-<<<<<<< HEAD
 app.use(express.static(path.join(__dirname, 'dist')));
-=======
-app.use(express.static(path.join(__dirname, 'dist')))
->>>>>>> 5c851c3cb2f2f3f8743d51122391c697111f9553
 app.use(session({
   secret: 'meow',
   resave: false,
   saveUninitialized: false,
-<<<<<<< HEAD
   cookie: {}
-=======
->>>>>>> 5c851c3cb2f2f3f8743d51122391c697111f9553
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
