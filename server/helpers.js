@@ -30,6 +30,9 @@ const addPetOwner = (data, callback) => {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5c851c3cb2f2f3f8743d51122391c697111f9553
 const addBusiness = (data, callback) => {
   bcrypt.hash(data.password, 10, (err, hash) => {
     let newBusiness = new db.Business({
@@ -46,11 +49,14 @@ const addBusiness = (data, callback) => {
     writeToDatabase(newBusiness, callback);
   });
 };
+<<<<<<< HEAD
 =======
 const hashPassword =
 const addRating = function() {
 }
 >>>>>>> d645d198900d772b0f9cc5d715b6a116291be389
+=======
+>>>>>>> 5c851c3cb2f2f3f8743d51122391c697111f9553
 
 const writeToDatabase = (document, callback) => {
   document.save()
@@ -92,13 +98,7 @@ const validateLogin = (attempt, stored, callback) => {
       return console.error('Error validating password:', err);
     }
     if (response) {
-      req.session.regenerate((err) => {
-        if (err) {
-          return console.error('Error regenerating session:', err);
-        }
-        req.session.user = response;
-        callback();
-      });
+      callback(stored);
     }
   });
 };
