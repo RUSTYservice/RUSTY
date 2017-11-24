@@ -28,8 +28,8 @@ class App extends React.Component {
              this.setState({ isLoggedIn: response.data });
            }
          })
-         .catch((error) => {
-           return console.error(error);
+         .catch((err) => {
+           return console.error(err);
          });
   }
 
