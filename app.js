@@ -18,10 +18,18 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.get('/api/landing', (req, res) => {
+  if (req.session && req.session.user) {
+    res.send(req.session.user.userType);
+  } else {
+    res.send('is not logged in');
+  }
+});
+
 // duplicate accordingly for user
 app.post('/api/business/signup', (req, res) => {
   controllers.addBusiness(req.body, (newBusiness) => {
-    req.session.regenerate(function (err) {
+    req.session.regenerate((err) => {
       if (err) {
         return console.error(err);
       }
@@ -34,7 +42,7 @@ app.post('/api/business/signup', (req, res) => {
 // duplicate accordingly for user
 app.post('/api/petOwner/signup', (req, res) => {
   controllers.addPetOwner(req.body, (newPetOwner) => {
-    req.session.regenerate(function (err) {
+    req.session.regenerate((err) => {
       if (err) {
         return console.error(err);
       }
