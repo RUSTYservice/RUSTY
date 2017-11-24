@@ -163,21 +163,21 @@ class App extends React.Component {
           <NavLink to="/search" activeClassName="active">Search</NavLink><br></br>
           <Switch>
             <Route path="/login" render={() => (
-              this.state.isLoggedIn? (
+              this.state.isLoggedIn ? (
                 <Redirect to={'/' + isLoggedIn + '/profile'} />
               ) : (
                 <Login authenticateLogin={this.authenticateLogin} />
               )
             )} />
             <Route path="/signup" render={() => (
-              this.state.isLoggedIn? (
+              this.state.isLoggedIn ? (
                 <Redirect to={'/' + isLoggedIn + '/profile'} />
               ) : (
                 <Signup app={this} test="eeeeee" />
               )
             )} />
             <Route path="/search" render={() => (
-              this.state.isLoggedIn? (
+              this.state.isLoggedIn ? (
                 <Redirect to={'/' + isLoggedIn + '/profile'} />
               ) : (
                 <SearchResults app={this} test="eeeeee" />
