@@ -1,1 +1,1 @@
-web: node ./seedql.js
+web: node ./testindex.js
