@@ -175,8 +175,33 @@ class App extends React.Component {
                   <NavLink to="/login" activeClassName="active">Login</NavLink><br></br>
                   <NavLink to="/signup" activeClassName="active">Sign up</NavLink><br></br>
                   <Switch>
-                    <Route path="/login" render={() => (<Login authenticateLogin={this.authenticateLogin} />)} />
-                    <Route path="/signup" render={() => (<Signup app={this} test="eeeeee" />)} />
+                    <Route path="/login" render={() => (
+                      this.state.isLoggedIn ? (
+                        <Redirect to={'/' + isLoggedIn + '/profile'} />
+                      ) : (
+                        <Login authenticateLogin={this.authenticateLogin} />
+                      )
+                    )} />
+                    <Route path="/signup" render={() => (
+                      this.state.isLoggedIn ? (
+                        <Redirect to={'/' + isLoggedIn + '/profile'} />
+                      ) : (
+                        <Signup app={this} test="eeeeee" />
+                      )
+                    )} />
+                    <Route path="/search" render={() => (
+                      this.state.isLoggedIn ? (
+                        <Redirect to={'/' + isLoggedIn + '/profile'} />
+                      ) : (
+                        <SearchResults app={this} test="eeeeee" />
+                      )
+                    )} />
+                    <Route path="/petOwner/profile" render={() => (
+                      <PetOwnerProfile />
+                    )} />
+                    <Route path="/business/profile" render={() => (
+                      <BusinessProfile />
+                    )} />
                   </Switch>
                 </div>
               </MuiThemeProvider>

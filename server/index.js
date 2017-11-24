@@ -4,13 +4,11 @@ const bcrypt = require('bcrypt');
 const session = require('express-session');
 const express = require('express');
 const helpers = require('./helpers.js');
-const cookieParser = require('cookie-parser');
 
 const port = process.env.PORT || 3000;
 const app = express();
 const path = require('path');
 
-app.use(cookieParser());
 app.use(session({
   secret: 'meow',
   resave: true,
