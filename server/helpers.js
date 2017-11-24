@@ -57,7 +57,7 @@ const writeToDatabase = (document, callback) => {
 };
 
 const addRating = function() {
-}
+};
 
 const isPetOwnerInDatabase = (petOwner, callback) => {
   db.User.findOne({ email: petOwner.email }, (err, result) => {
