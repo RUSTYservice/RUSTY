@@ -43,7 +43,7 @@ let businessSchema = mongoose.Schema({
   zip: String,
 });
 
-let ratingSchema = mongoose.Schema({
+let reviewSchema = mongoose.Schema({
   // _id: auto-gen
   wags: Number,
   description: String,
@@ -53,8 +53,8 @@ let ratingSchema = mongoose.Schema({
 
 let User = mongoose.model('User', userSchema);
 let Business = mongoose.model('Business', businessSchema);
-let Rating = mongoose.model('Rating', ratingSchema);
+let Review = mongoose.model('Review', reviewSchema);
 
 module.exports.User = User;
 module.exports.Business = Business;
-module.exports.Rating = Rating;
+module.exports.Review = Review;
