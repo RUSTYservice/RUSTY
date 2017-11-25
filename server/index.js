@@ -1,5 +1,4 @@
 const bodyParser = require('body-parser');
-const db = require('../db/db');
 const express = require('express');
 const helpers = require('./helpers.js');
 
@@ -88,17 +87,14 @@ app.post('/api/login', (req, res) => {
 });
 
 app.get('/api/businessListings', (req, res) => {
-  db.Business.find({}, (err, businesses) => {
-    if (err) {
-      return console.error(err);
-    }
-    res.send(businesses);
+  helpers.fetchBusinessListings((businessTuples) => {
+    res.send(businessTuples);
   });
 });
 
-app.post('/api/rating', (req, res) => {
-  helpers.addRating(req.body, () => {
-    res.send('added rating');
+app.post('/api/review', (req, res) => {
+  helpers.addReview(req.body, () => {
+    res.send('added review');
   });
 });
 
