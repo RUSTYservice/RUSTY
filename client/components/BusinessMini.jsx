@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import PrimaryHeader from './PrimaryHeader.jsx';
+import Review from './Review.jsx'
 import Wag from './Wag.jsx';
 
 class BusinessMini extends React.Component {
@@ -12,24 +13,16 @@ class BusinessMini extends React.Component {
       wags: Array(5).fill(null),
       reviewText: '',
     };
-    /* this.handleChange = this.handleChange.bind(this);*/
-    /* this.handleClick = this.handleClick.bind(this);*/
   }
 
   /* state contains: selected number of wags; review description */
 
-  handleSubmit(event) {
+  handleSubmit() {
     var numWags = 0;
-    /* for (var i = 0; i < this.state.wags.length; i++) {*/
-    /* if (this.state.wags[i]) {*/
-    /* numWags++;*/
-    /* }*/
-    /* }*/
     while (this.state.wags[numWags]) {
       numWags++;
     }
-    /* TODO: pass user info */
-    axios.post('/api/rating', {
+    axios.post('/api/review', {
       wags: numWags,
       description: this.state.reviewText,
       userId: this.props.userId,
@@ -47,8 +40,6 @@ class BusinessMini extends React.Component {
     this.setState({ reviewText: event.target.value });
   }
 
-  /* consulted reactjs.org tutorial */
-
   handleClick(i) {
     const wags = this.state.wags.map((wag, index) => {
       return index <= i ? 'X' : null;
@@ -61,11 +52,22 @@ class BusinessMini extends React.Component {
   }
 
   render() {
+
+    var sumWags = 0;
+    const reviews = this.props.reviews;
+    for (var i = 0; i < reviews.length; i++) {
+      sumWags += reviews[i].wags;
+    }
+    var avgWags = 'no reviews yet'
+    if (i > 0) {
+      avgWags = (sumWags / i).toString();
+    }
+
     return (
       <div>
-        <PrimaryHeader />
         <h1>Business Mini Listing</h1>
         <p>{this.props.businessName}</p>
+        <p>{avgWags}</p>
         <img src={this.props.profileImg} />
         {this.renderWag(0)}
         {this.renderWag(1)}
@@ -73,7 +75,10 @@ class BusinessMini extends React.Component {
         {this.renderWag(3)}
         {this.renderWag(4)}
         <input value={this.state.reviewText} onChange={event => this.handleChange(event)}></input>
-        <button onClick={event => this.handleSubmit(event)}>Submit review</button>
+        <button onClick={() => this.handleSubmit()}>Submit review</button>
+        {reviews.map((review) => {
+           return <Review description={review.description} rating={review.wags} />
+        })}
       </div>
     );
   }

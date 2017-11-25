@@ -1,7 +1,5 @@
 const db = require('../db/db.js');
 const bcrypt = require('bcrypt');
-const session = require('express-session');
-
 
 // save petOwner to db and call callback on success
 const addPetOwner = (data, callback) => {
@@ -37,19 +35,18 @@ const addBusiness = (data, callback) => {
       password: hash,
       phone: data.phone,
       businessCategory: data.businessCategory,
-      profileImg: data.profileImg,
       street: data.street,
       city: data.city,
       state: data.state,
-      zip: data.zip,
+      zip: data.zip
     });
     writeToDatabase(business, callback);
   });
 };
 
 const hashPassword = {};
-const addRating = (data, callback) => {
-  let review = new db.Rating({
+const addReview = (data, callback) => {
+  let review = new db.Review({
     wags: data.wags,
     description: data.description,
     userId: data.userId,
@@ -100,15 +97,41 @@ const validateLogin = (attempt, stored, callback) => {
   });
 };
 
-
-const fetchProfileData = () => {
+// the eachAsync callback ought to be easily modularized...but i can't do that for some reason
+const fetchBusinessListings = (callback) => {
+  var output = [];
+  db.Business.
+    find().
+    cursor().
+    eachAsync((business) => {
+      return db.Review.
+        find({ businessId: business._id }).
+        then((reviews) => {
+          output.push([business, reviews]);
+        });
+    }).
+    then(() => {
+      callback(output);
+    });
 };
 
+const fetchPetOwnerProfileData = (callback) => {
+};
+
+const getUserReviews = (petOwner) => {
+  var output = [];
+  return db.Review.
+    find({ userId: petOwner._id }).
+    then((reviews) => {
+      output.push([petOwner, reviews]);
+    });
+};
 
 module.exports.addPetOwner = addPetOwner;
 module.exports.isPetOwnerInDatabase = isPetOwnerInDatabase;
 module.exports.isBusinessInDatabase = isBusinessInDatabase;
 module.exports.validateLogin = validateLogin;
-module.exports.fetchProfileData = fetchProfileData;
+module.exports.fetchPetOwnerProfileData = fetchPetOwnerProfileData;
+module.exports.fetchBusinessListings = fetchBusinessListings;
 module.exports.addBusiness = addBusiness;
-module.exports.addRating = addRating;
+module.exports.addReview = addReview;

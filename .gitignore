@@ -74,6 +74,7 @@ client/index.html
 
 package-lock.json
 
+app.js
 seedql.js
 testindex.js
 models/
