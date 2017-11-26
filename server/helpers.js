@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 // save petOwner to db and call callback on success
 const addPetOwner = (data, callback) => {
   bcrypt.hash(data.password, 10, (err, hash) => {
-    let petOwner = new db.PetOwner({
+    const petOwner = new db.PetOwner({
       pet: data.pet,
       username: data.username,
       profileImg: data.profileImg,
@@ -15,21 +15,13 @@ const addPetOwner = (data, callback) => {
       state: data.state,
       zip: data.zip,
     });
-    // petOwner.save((err, document) => {
-    //   if (err) {
-    //     console.log('PetOwner not saved, possible duplicate');
-    //     // console.log(err);
-    //   } else {
-    //     callback(document);
-    //   }
-    // });
     writeToDatabase(petOwner, callback);
   });
 };
 
 const addBusiness = (data, callback) => {
   bcrypt.hash(data.password, 10, (err, hash) => {
-    let business = new db.Business({
+    const business = new db.Business({
       businessName: data.businessName,
       email: data.email,
       password: hash,
@@ -45,9 +37,8 @@ const addBusiness = (data, callback) => {
   });
 };
 
-const hashPassword = {};
 const addReview = (data, callback) => {
-  let review = new db.Review({
+  const review = new db.Review({
     wags: data.wags,
     description: data.description,
     petOwnerId: data.petOwnerId,
@@ -109,18 +100,18 @@ const validateLogin = (attempt, stored, callback) => {
 
 // the eachAsync callback ought to be easily modularized...but i can't do that for some reason
 const fetchBusinessListings = (callback) => {
-  var output = [];
-  db.Business.
-    find().
-    cursor().
-    eachAsync((business) => {
-      return db.Review.
-        find({ businessId: business._id }).
-        then((reviews) => {
+  const output = [];
+  db.Business
+    .find()
+    .cursor()
+    .eachAsync((business) => {
+      return db.Review
+        .find({ businessId: business._id })
+        .then((reviews) => {
           output.push([business, reviews]);
         });
-    }).
-    then(() => {
+    })
+    .then(() => {
       callback(output);
     });
 };
@@ -129,7 +120,7 @@ const fetchPetOwnerProfileData = (callback) => {
 };
 
 const getReviews = (doc, callback) => {
-  var output = [doc];
+  const output = [doc];
   return db.Review
     .find({ [doc.collection.name.slice(0, -1) + 'Id']: doc._id })
     .then((reviews) => {

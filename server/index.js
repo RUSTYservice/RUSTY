@@ -24,25 +24,6 @@ app.post('/api/petOwner/signup', (req, res) => {
   });
 });
 
-/*
-// uncomment to seed test user and business data
-const businessData = require('../seeds/businesses.js');
-helpers.addPetOwner({
-pet: 'rusty',
-username: 'krista',
-profileImg: 'https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/11898737_10152912694381150_8438824989009173766_n.jpg?oh=5552c729aef988b48a95fd9585f8d8db&oe=5A9CA597',
-email: 'abrakd@yahoo.com',
-password: 'moo',
-street: '22 abc street',
-city: 'Portland',
-state: 'OR',
-zipcode: '97203'
-},
-(data) => console.log(data, 'added'));
-
-businessData.forEach((business) => helpers.addBusiness(business, () => console.log('done')));
-*/
-
 app.post('/api/login', (req, res) => {
   const callback = (user) => {
     // if user found
@@ -93,7 +74,6 @@ app.get('/*', (req, res) => {
   }
 });
 
-
-app.listen(port, function() {
+app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });

@@ -11,20 +11,18 @@
     "heroku-postbuild": "webpack",
     "dev": "webpack-dev-server",
     "build": "webpack -d --hot",
-    "testdb": "seed"
+    "test": "mocha"
   },
   "author": "all that",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
-    "chai": "^4.1.2",
     "eslint": "^4.11.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
-    "mocha": "^4.0.1",
     "node-mongo-seeds": "^2.3.1",
     "nodemon": "^1.12.1",
     "path": "^0.12.7",
@@ -44,11 +42,13 @@
     "html-webpack-plugin": "^2.30.1",
     "jquery": "^3.2.1",
     "material-ui": "^0.19.4",
+    "mocha": "^4.0.1",
     "mongoose": "^4.9.6",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "react-router-dom": "^4.2.2",
     "request": "^2.81.0",
+    "sinon": "^4.1.2",
     "webpack": "^3.8.1"
   }
 }
