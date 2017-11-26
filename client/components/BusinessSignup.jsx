@@ -1,7 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
 
-
 let BusinessSignup = (props) => {
 	console.log('propsfrom app =',props);
 	console.log("in sign up before return statement");
