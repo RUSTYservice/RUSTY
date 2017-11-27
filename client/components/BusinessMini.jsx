@@ -133,6 +133,9 @@ class BusinessMini extends React.Component {
           {this.renderWag(2)}
           {this.renderWag(3)}
           {this.renderWag(4)}
+          {this.props.promotions.map((promotion) => {
+             return <p>{promotion.description}</p>
+          })}
            <TextField
             hintText="(<--) some wags, then (-->) a review. "
             hintStyle={{hintStyle}}

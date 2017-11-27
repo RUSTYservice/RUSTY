@@ -1,0 +1,122 @@
+[
+  {
+    "pet": "Santa's Little Helper",
+    "email": "a@gmail.com",
+    "password": "pet",
+    "phone": "123-456-7890",
+    "username": "Robin",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "1438 NE Alberta St.",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97211"
+  },
+  {
+    "pet": "Scruffy",
+    "email": "b@gmail.com",
+    "password": "pet",
+    "phone": "987-456-4563",
+    "username": "Ben",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "1438 NE Alberta St.",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97211"
+  },
+  {
+    "pet": "Ein",
+    "email": "c@gmail.com",
+    "password": "pet",
+    "phone": "765-446-3278",
+    "username": "Nick",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "1438 NE Alberta St.",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97211"
+  },
+  {
+    "pet": "Rusty",
+    "email": "d@gmail.com",
+    "password": "pet",
+    "phone": "456-789-1144",
+    "username": "Krista, Floobits Ghost",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "1438 NE Alberta St.",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97211"
+  },
+  {
+    "pet": "Odie",
+    "email": "e@gmail.com",
+    "password": "pet",
+    "phone": "123-664-9976",
+    "username": "Brynn",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "1438 NE Alberta St.",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97211"
+  },
+  {
+    "pet": "Scooby",
+    "email": "f@gmail.com",
+    "password": "pet",
+    "phone": "654-688-9713",
+    "username": "Brianna",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "1438 NE Alberta St.",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97211"
+  },
+  {
+    "pet": "Shaggy",
+    "email": "g@gmail.com",
+    "password": "pet",
+    "phone": "123-123-6544",
+    "username": "Briar Rose",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "1438 NE Alberta St.",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97211"
+  },
+  {
+    "pet": "Fry",
+    "email": "h@gmail.com",
+    "password": "pet",
+    "phone": "646-894-1231",
+    "username": "Briony",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "1438 NE Alberta St.",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97211"
+  }
+]

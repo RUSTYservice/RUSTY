@@ -1,0 +1,152 @@
+[
+  {
+    "businessName": "Tin Shed",
+    "email": "tinshedgardencafe@gmail.com",
+    "password": "doggo",
+    "phone": "503-288-6966",
+    "businessCategory": "Bars/Restaurants",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "1438 NE Alberta St.",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97211"
+  },
+  {
+    "businessName": "Java Hound",
+    "email": "javahound@gmail.com",
+    "password": "doggo",
+    "phone": "503-841-5410",
+    "businessCategory": "Cafes",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "610 NW 23rd St.",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97220"
+  },
+  {
+    "businessName": "The Rambler",
+    "email": "hello@ramblerbar.com",
+    "password": "doggo",
+    "phone": "503-459-4049",
+    "businessCategory": "Bars/Restaurants",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "4205 N. Mississippi Ave.",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97217"
+  },
+  {
+    "businessName": "Victoria",
+    "email": "info@victoriapdx.com",
+    "password": "doggo",
+    "phone": "503-862-9981",
+    "businessCategory": "Bars/Restaurants",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "4835 N Albina Ave.",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97217"
+  },
+  {
+    "businessName": "White Owl Social Club",
+    "email": "woscpdx@gmail.com",
+    "password": "doggo",
+    "phone": "503-456-8288",
+    "businessCategory": "Bars/Restaurants",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "1305 SE 8th Ave.",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97214"
+  },
+  {
+    "businessName": "Ace Hotel",
+    "email": "acepdx@gmail.com",
+    "password": "doggo",
+    "phone": "503-423-4354",
+    "businessCategory": "Hotels",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "1022 SW Stark St.",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97205"
+  },
+  {
+    "businessName": "Hotel Deluxe",
+    "email": "info@hoteldeluxeportland.com",
+    "password": "doggo",
+    "phone": "503-219-2094",
+    "businessCategory": "Hotels",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "729 SW 15th Ave.",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97205"
+  },
+  {
+    "businessName": "The Benson",
+    "email": "info@thebenson.com",
+    "password": "doggo",
+    "phone": "503-228-2000",
+    "businessCategory": "Hotels",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "309 SW Broadway",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97205"
+  },
+  {
+    "businessName": "Hotel Vintage",
+    "email": "info@hotelvintageportland.com",
+    "password": "doggo",
+    "phone": "503-745-4435",
+    "businessCategory": "Hotels",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "22 SW Broadway",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97205"
+  },
+  {
+    "businessName": "Jim and Patty's Coffee People",
+    "email": "jim@jimandpattys.com",
+    "password": "doggo",
+    "phone": "503-284-2121",
+    "businessCategory": "Cafes",
+    "profileImg": {
+      "cloudinaryID": "aaaaaaaaa",
+      "cloudinaryURL": "http://res.cloudinary.com/du0wshurp/image/upload/v1511773791/aaaaaaaaa.jpg"
+    },
+    "street": "4951 NE Fremont St.",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97213"
+  }
+]

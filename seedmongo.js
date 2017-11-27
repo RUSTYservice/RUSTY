@@ -1,6 +1,6 @@
 const db = require('./db/db.js');
-const businesses = require('./seeds/businesses.json');
-const petOwners = require('./seeds/petOwners.json');
+const businesses = require('./seeds/businessesCloudinary.json');
+const petOwners = require('./seeds/petOwnersCloudinary.json');
 const Promise = require('bluebird');
 const bcrypt = require('bcrypt');
 
@@ -89,18 +89,26 @@ db.PetOwner.remove()
             }
           });
         })
-        // .then((petOwner) => {
-        //   const review = new db.Review({
-        //     wags: Math.floor(Math.random() * promotionDummies.length),
-        //     description: descriptionDummies[Math.floor(Math.random() * promotionDummies.length)];
-        //     petOwnerId: petOwner._id,
-        //   });
-        //   return review.save((err) => {
-        //     if (err) {
-        //       return console.error(err);
-        //     }
-        //   });
-        // });
+        .then((petOwner) => {
+          const rand = Math.floor(Math.random() * businesses.length);
+          db.Business
+            .find()
+            .then((businesses) => {
+              Promise.each(businesses, (business) => {
+                const review = new db.Review({
+                  wags: Math.floor(Math.random() * 5) + 1,
+                  description: descriptionDummies[Math.floor(Math.random() * promotionDummies.length)],
+                  petOwnerId: petOwner._id,
+                  businessId: business._id
+                });
+                return review.save((err) => {
+                  if (err) {
+                    return console.error(err);
+                  }
+                });
+              })
+            })
+        });
     });
   })
   .then(() => {

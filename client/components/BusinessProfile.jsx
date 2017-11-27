@@ -58,7 +58,7 @@ class BusinessProfile extends React.Component {
               <CardHeader
                 title={`Welcome, ${this.props.user.businessName}!`}
               />
-              <img src={this.props.user.profileImg} style={{maxWidth: 500}} alt="" />
+              <img src={this.props.user.profileImg.cloudinaryURL} style={{maxWidth: 500}} alt="" />
               <CardMedia
                 overlay={<CardTitle title={this.props.user.businessName}/>}
               />
@@ -69,6 +69,13 @@ class BusinessProfile extends React.Component {
                   {this.props.reviews.map((review) => {
                     return (
                       <li>{review.description}</li>
+                    );
+                  })}
+                </ul>
+                <ul>
+                  {this.props.promotions.map((promotion) => {
+                    return (
+                      <li>{promotion.description}</li>
                     );
                   })}
                 </ul>

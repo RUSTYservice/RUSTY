@@ -17,7 +17,11 @@ let petOwnerSchema = mongoose.Schema({
     unique: true,
   },
   password: String,
-  profileImg: String,
+  // profileImg: String,
+  profileImg: {
+    cloudinaryID: String,
+    cloudinaryURL: String
+  },
   // https://gist.github.com/aheckmann/2408370
   street: String,
   city: String,
@@ -28,6 +32,10 @@ let petOwnerSchema = mongoose.Schema({
 
 let businessSchema = mongoose.Schema({
   // _id: auto-gen
+  galleryImages: [{
+    cloudinaryID: String,
+    cloudinaryURL: String
+  }],
   businessName: String,
   email: {
     type: String,
@@ -36,7 +44,15 @@ let businessSchema = mongoose.Schema({
   password: String,
   phone: String,
   businessCategory: String,
-  profileImg: String,
+  // profileImg: String,
+  profileImg: {
+    cloudinaryID: String,
+    cloudinaryURL: String
+  },
+  profileVideo: {
+    cloudinaryID: String,
+    cloudinaryURL: String
+  },
   street: String,
   city: String,
   state: String,

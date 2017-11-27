@@ -28,7 +28,7 @@ const PetOwnerProfile = (props) => {
           <CardHeader
             title={'Welcome back ' + props.user.username + ' and ' + props.user.pet + '!'}
           />
-          <img src={props.user.profileImg} style={{maxWidth: 500}} alt="" />
+          <img src={props.user.profileImg.cloudinaryURL} style={{maxWidth: 500}} alt="" />
           <CardMedia
             overlay={<CardTitle title={props.user.pet}/>}
           />

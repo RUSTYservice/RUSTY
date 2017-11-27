@@ -8,6 +8,8 @@ import Signup from './Signup.jsx';
 import BusinessProfile from './BusinessProfile.jsx';
 import PetOwnerProfile from './PetOwnerProfile.jsx';
 import PrimaryHeader from './PrimaryHeader.jsx';
+import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
+import CloudinaryCore from 'cloudinary-core';
 
 class App extends React.Component {
   constructor(props) {
@@ -168,7 +170,7 @@ class App extends React.Component {
     if (this.state.isLoggedIn) {
       return (
         this.state.userType === 'Business' ?
-        <MuiThemeProvider><BusinessProfile user={this.state.user[0]} onLogOut={this.onLogOut} reviews={this.state.user[1]} />
+        <MuiThemeProvider><BusinessProfile user={this.state.user[0]} onLogOut={this.onLogOut} reviews={this.state.user[1]} promotions={this.state.user[2]} />
         </MuiThemeProvider>
         :
         <MuiThemeProvider><PetOwnerProfile user={this.state.user[0]} onLogOut={this.onLogOut} reviews={this.state.user[1]} />
