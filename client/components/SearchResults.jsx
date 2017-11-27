@@ -1,19 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-import IconMenu from 'material-ui/IconMenu';
-import IconButton from 'material-ui/IconButton';
-import FlatButton from 'material-ui/FlatButton';
-import {red500, greenA200, blue500} from 'material-ui/styles/colors';
+import { greenA200, blue500 } from 'material-ui/styles/colors';
 import ActionSearch from 'material-ui/svg-icons/action/search';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
-import PrimaryHeader from './PrimaryHeader.jsx';
-import BusinessMini from './BusinessMini.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-const iconStyles = {
-  marginRight: 24,
-};
+import BusinessMini from './BusinessMini.jsx';
 
 class SearchResults extends React.Component {
   constructor(props) {
@@ -27,13 +19,13 @@ class SearchResults extends React.Component {
 
   componentDidMount() {
     axios.get('/api/businessListings')
-         .then((response) => {
-           console.log('SEARCH_RESULTS DID MOUNT:', response.data);
-           this.addBusinesses(response.data);
-         })
-         .catch((error) => {
-           console.log('ERROR ON SEACH_RESULTS DID MOUNT:', error);
-         });
+      .then((response) => {
+        console.log('SEARCH_RESULTS DID MOUNT:', response.data);
+        this.addBusinesses(response.data);
+      })
+      .catch((error) => {
+        console.log('ERROR ON SEACH_RESULTS DID MOUNT:', error);
+      });
   }
 
   addBusinesses(businessTuples) {
@@ -47,18 +39,18 @@ class SearchResults extends React.Component {
   /* businessTuple is [{business}, [review 0, review 1, ...]] */
   render() {
     const callback = (businessTuple) => {
-      var business = businessTuple[0];
-      var reviews = businessTuple[1];
-      var promotions = businessTuple[2];
+      const business = businessTuple[0];
+      const reviews = businessTuple[1];
+      const promotions = businessTuple[2];
       return (<BusinessMini
-                petOwnerId={this.props.petOwnerId}
-                business={business}
-                id={business._id}
-                reviews={reviews}
-                promotions={promotions}
-                businessName={business.businessName}
-                businessCategory={business.businessCategory}
-                profileImg={business.profileImg.cloudinaryURL}
+        petOwnerId={this.props.petOwnerId}
+        business={business}
+        id={business._id}
+        reviews={reviews}
+        promotions={promotions}
+        businessName={business.businessName}
+        businessCategory={business.businessCategory}
+        profileImg={business.profileImg.cloudinaryURL}
       />);
     };
     const businessTuples = this.state.businessTuples;
@@ -70,26 +62,26 @@ class SearchResults extends React.Component {
     };
     return (
       <MuiThemeProvider>
-      <div>
-        <DropDownMenu
-          iconButton={<ActionSearch color={blue500} hoverColor={greenA200} />}
-          value={this.state.value}
-          onChange={(event, index, value) => this.handleChange(event, index, value)}
+        <div>
+          <DropDownMenu
+            iconButton={<ActionSearch color={blue500} hoverColor={greenA200} />}
+            value={this.state.value}
+            onChange={(event, index, value) => this.handleChange(event, index, value)}
           >
-          <MenuItem value={1} label="browse local businesses" primaryText={legend['1']} />
-          <MenuItem value={2} label="browse local bars and restaurants" primaryText={legend['2']} />
-          <MenuItem value={3} label="browse local cafes" primaryText={legend['3']} />
-          <MenuItem value={4} label="browse local hotels"primaryText={legend['4']} />
-        </DropDownMenu>
-      <div>
-          { this.state.category === 1 ? (
-              businessTuples.map(callback)
-          ) : (
-              businessTuples.filter(businessTuple => businessTuple[0].businessCategory === legend[this.state.category])
-                            .map(callback)
-          )};
+            <MenuItem value={1} label="browse local businesses" primaryText={legend['1']} />
+            <MenuItem value={2} label="browse local bars and restaurants" primaryText={legend['2']} />
+            <MenuItem value={3} label="browse local cafes" primaryText={legend['3']} />
+            <MenuItem value={4} label="browse local hotels"primaryText={legend['4']} />
+          </DropDownMenu>
+          <div>
+            { this.state.category === 1 ? (
+                businessTuples.map(callback)
+            ) : (businessTuples.filter(businessTuple =>
+              businessTuple[0].businessCategory === legend[this.state.category])
+                              .map(callback)
+            )}
+          </div>
         </div>
-      </div>
       </MuiThemeProvider>
     );
   }

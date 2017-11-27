@@ -58,9 +58,9 @@ class BusinessProfile extends React.Component {
               <CardHeader
                 title={`Welcome, ${this.props.user.businessName}!`}
               />
-              <img src={this.props.user.profileImg.cloudinaryURL} style={{maxWidth: 500}} alt="" />
+              <img src={this.props.user.profileImg.cloudinaryURL} style={{ maxWidth: 500 }} alt="" />
               <CardMedia
-                overlay={<CardTitle title={this.props.user.businessName}/>}
+                overlay={<CardTitle title={this.props.user.businessName} />}
               />
               <CardText >
                 What Rusty users are saying about you:
@@ -72,6 +72,8 @@ class BusinessProfile extends React.Component {
                     );
                   })}
                 </ul>
+                <br />
+                <h3>Your special promotions:</h3>
                 <ul>
                   {this.props.promotions.map((promotion) => {
                     return (
