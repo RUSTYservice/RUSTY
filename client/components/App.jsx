@@ -8,6 +8,9 @@ import Signup from './Signup.jsx';
 import BusinessProfile from './BusinessProfile.jsx';
 import PetOwnerProfile from './PetOwnerProfile.jsx';
 import PrimaryHeader from './PrimaryHeader.jsx';
+import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
+import CloudinaryCore from 'cloudinary-core';
+
 
 class App extends React.Component {
   constructor(props) {
