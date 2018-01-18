@@ -1,6 +1,5 @@
 import React from 'react';
 
-/* TODO: pass in links to other profiles */
 const Review = (props) => {
   return (
     <div>

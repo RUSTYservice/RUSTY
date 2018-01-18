@@ -44,13 +44,3 @@ const PetOwnerProfile = (props) => {
 
 export default PetOwnerProfile;
 
-
-/*
-FOR SECOND CARD AS HISTORY OF RUSTY ACTIVITY
-// import Review from './Review.jsx';
-
-  <br />
-  {props.reviews.map((review) => {
-    return <Review rating={review.wags} description={review.description} />
-  })}
-*/

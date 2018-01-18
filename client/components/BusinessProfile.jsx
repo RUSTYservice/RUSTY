@@ -84,7 +84,7 @@ class BusinessProfile extends React.Component {
               </CardText>
               <CardActions>
                 <TextField
-                  hintText="enter a new promotion here!"
+                  hintText="Enter a new promotion here!"
                   hintStyle={{ hintStyle }}
                   multiLine={true}
                   value={this.state.promoText}

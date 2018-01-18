@@ -12,6 +12,7 @@ const styles = {
 
 const PrimaryHeader = (props) => (
   <AppBar
+    style={{ backgroundColor: '#7CB342' }}
     title={<span style={styles.title}>RUSTY</span>}
     iconElementLeft={<IconButton><Pets /></IconButton>}
   />

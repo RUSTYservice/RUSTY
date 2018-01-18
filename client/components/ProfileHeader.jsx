@@ -13,6 +13,7 @@ const styles = {
 const ProfileHeader = (props) => (
 
   <AppBar
+    style={{ backgroundColor: '#7CB342' }}
     title={<span style={styles.title}>RUSTY</span>}
     iconElementLeft={<IconButton><Pets /></IconButton>}
     iconElementRight={<FlatButton style={{ float: 'right' }} label="log out" onClick={props.onLogOut} />}

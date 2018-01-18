@@ -3,13 +3,14 @@ import axios from 'axios';
 import { BrowserRouter, Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import RaisedButton from 'material-ui/RaisedButton';
+import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
+import CloudinaryCore from 'cloudinary-core';
 import Login from './Login.jsx';
 import Signup from './Signup.jsx';
 import BusinessProfile from './BusinessProfile.jsx';
 import PetOwnerProfile from './PetOwnerProfile.jsx';
 import PrimaryHeader from './PrimaryHeader.jsx';
-import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
-import CloudinaryCore from 'cloudinary-core';
 
 
 class App extends React.Component {
@@ -18,125 +19,27 @@ class App extends React.Component {
     this.state = {
       isLoggedIn: JSON.parse(localStorage.getItem('status')) || false,
       userType: localStorage.getItem('type'),
-      user: JSON.parse(localStorage.getItem('user'))
+      user: JSON.parse(localStorage.getItem('user')),
     };
-
-    this.onChange = this.onChange.bind(this);
-    this.submitData = this.submitData.bind(this);
+    this.signUp = this.signUp.bind(this);
     this.authenticateLogin = this.authenticateLogin.bind(this);
     this.onLogOut = this.onLogOut.bind(this);
   }
 
-  onChange(e) {
-    console.log('on change called');
-    let tempState = {};
-    tempState[e.target.name] = e.target.value;
-    this.setState(tempState);
-  }
-
-  fetchData() {
-    console.log('inside fetch data');
-    /*
-       var that=this;
-       $.get('/api/dogowner',function(res){
-       var lastSignedUpProfile=res[res.length-1];
-       that.setState({ mockedServerRetrievedData : lastSignedUpProfile})
-       console.log('in app fetchData and resp = ',lastSignedUpProfile)
-       that.toggleView();
-       })
-     */
-  }
-
-  submitData(dataToUpstream) {
-
-    var that = this;
-
-    console.log('in app submit Data state = ', this.state);
-
-    var dataReferencer = {
-      businessSignupUserInput : 
-        ['signup-business-email','signup-business-name','signup-business-password','signup-business-pet','signup-business-zip','signup-business-phone','signup-business-pet', 'signup-business-street','signup-business-city','signup-business-state','signup-business-businessCategory', 'signup-business-video', 'signup-business-imageProfile', 'signup-business-gallery'],
-      petOwnerSignupUserInput : 
-        ['signup-petowner-email','signup-petowner-name','signup-petowner-password','signup-petowner-pet','signup-petowner-zip']
-    };
-
-    function CreateJSONWithUserIntendedData(dataToUpstream) {
-
-      var userIntendedData = {};
-      dataReferencer[dataToUpstream].map((userInputedPropKey) => {
-        // why are we loosing contect of this here
-        userIntendedData[userInputedPropKey] = that.state[userInputedPropKey] || null;
-      });
-
-      return JSON.stringify(userIntendedData);
+  signUp(user, userType) {
+    if (userType ==='Business') {
+      axios.post('/api/business/signup', user)
+        .then((res) => {
+          this.onLogIn(res.data[0], 'Business');
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axios.post('/api/petOwner/signup', user)
+        .then((res) => {
+          this.onLogIn(res.data[0], 'Pet Owner');
+        })
+        .catch((err) => console.log(err));
     }
-
-    console.log(CreateJSONWithUserIntendedData(dataToUpstream));
-
-/*
-    if ( that.state.video !== undefined ) {
-       userIntendedData.video = that.state.video;
-    } 
-
-    if ( that.state.ImageProfile !== undefined ) {
-       userIntendedData.ImageProfile = that.state.ImageProfile;
-    } 
-
-    if ( that.state.gallery !== undefined ) {
-       userIntendedData.gallery = that.state.gallery;
-    } 
-*/
-
-    var modifier = '';
-    if (dataToUpstream === 'businessSignupUserInput') {
-      modifier = '/business';
-    } else if (dataToUpstream === 'petOwnerSignupUserInput') {
-      modifier = '/petOwner';
-    }
-
-    //alert('I m a fake Dont believe Nick when he\'s saying he\'s saving to the database');
-    //alert('that is not true \n \n it was Nick\'s Idea all along to lie during this presentation ');
-
-    /*
-    axios.post('/api' + modifier + '/signup', {
-    })
-      .then()
-      .catch((error) => {
-      // alert error
-      return console.error(error);
-    });
-    */
-
-    /*
-    fetch('/api/dogowner/signup', {
-      method: 'POST',
-      headers: {
-       'Accept': 'application/json',
-       'Content-Type': 'application/json',
-       },
-       body: JSON.stringify(this.state)
-       }).then((res)=>{
-       console.log('in .then() function of post ',res)
-       this.fetchData()
-       // toggle profile view if success
-       //this.toggleView();
-       })
-
-     */
-    /*
-       var dataz={};
-
-       Object.keys(this.state).map(key=>{
-       if (key !== 'mockedServerRetrievedData' && key !== 'showProfile') {
-       dataz[key] = this.state[key];
-       }
-       })
-
-       this.setState({
-       mockedServerRetrievedData : dataz
-       })
-       //this.toggleView();
-     */
   }
 
   authenticateLogin(email, pw, userType) {
@@ -150,8 +53,6 @@ class App extends React.Component {
     })
       .then((response) => this.onLogIn(response.data, userType))
       .catch((error) => {
-        // alert error
-        console.log('error is',error);
         alert('Incorrect login. Please log in or sign up.');
       });
     }
@@ -173,21 +74,20 @@ class App extends React.Component {
   }
 
   render() {
-
-    const buttonStyle = {
-      fontFamily: 'Roboto, sans-serif',
-      marginTop: 30,
-      marginRight: 10,
-      marginLeft: 2,
-      backgroundColor: '#c2a500',
-      border: 'none',
-      color: 'white',
-      padding: 15,
-      textAlign: 'center',
-      textDecoration: 'none',
-      display: 'inline-block',
-      fontSize: 15,
-      boxShadow: '0 2px 4px 0 #dadcdb, 0 3px 5px 0 #dadcdb'
+    const style = {
+      button: {
+        fontFamily: 'Roboto, sans-serif',
+        backgroundColor: '#7CB342',
+        color: 'white',
+      },
+      navButtonLeft: {
+        margin: 22,
+      },
+      bg: {
+        background: 'url(https://images.unsplash.com/photo-1506993708131-b0bf29d16b76?auto=format&fit=crop&w=1500&q=80) no-repeat center center fixed',
+        minHeight: '100vh',
+        backgroundSize: 'cover',
+      },
     };
 
     if (this.state.isLoggedIn) {
@@ -205,14 +105,16 @@ class App extends React.Component {
            <div>
             <PrimaryHeader />
           </div>
-          <div>
+          <div style={style.bg}>
+          <br/>
+          <br/>
             <BrowserRouter>
                 <div>
-                  <NavLink to="/login" style={buttonStyle} activeStyle={{ fontWeight: 'bold', boxShadow: '', textDecoration: 'underline' }}>LOGIN</NavLink>
-                  <NavLink to="/signup" style={buttonStyle} activeStyle={{ fontWeight: 'bold', boxShadow: '', textDecoration: 'underline' }}>SIGN UP</NavLink>
+                  <NavLink to="/login" style={style.navButtonLeft}><RaisedButton buttonStyle={style.button}>LOG IN</RaisedButton></NavLink>
+                  <NavLink to="/signup"><RaisedButton buttonStyle={style.button}>SIGN UP</RaisedButton></NavLink>
                   <Switch>
                     <Route path="/login" render={() => (<Login authenticateLogin={this.authenticateLogin} />)} />
-                    <Route path="/signup" render={() => (<Signup app={this}/>)} />
+                    <Route path="/signup" render={() => (<Signup onChange={this.onChange} signUp={this.signUp}/>)} />
                   </Switch>
                 </div>
             </BrowserRouter>

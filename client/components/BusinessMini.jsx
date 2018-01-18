@@ -77,7 +77,7 @@ class BusinessMini extends React.Component {
     for (var i = 0; i < reviews.length; i++) {
       sumWags += reviews[i].wags;
     }
-    let avgWags = 'no';
+    let avgWags = 'No';
     if (i > 0) {
       avgWags = (sumWags / i).toString();
     }
@@ -103,7 +103,7 @@ class BusinessMini extends React.Component {
             <CardText
               expandable={true}
             >
-              <h3>What rusty users are saying about {this.props.businessName}:</h3>
+              <h3>What RUSTY users are saying about {this.props.businessName}:</h3>
               {reviews.map((review) => {
                 return <Review description={review.description} />;
               })}
@@ -112,7 +112,7 @@ class BusinessMini extends React.Component {
               expandable={true}
             >
               <ul>
-                <h2>Special promotional offers for rusty users:</h2>
+                <h2>Special promotional offers for RUSTY users:</h2>
                 {this.props.promotions.map((promotion) => {
                    return <p>{promotion.description}</p>;
                 })}
@@ -124,7 +124,7 @@ class BusinessMini extends React.Component {
               {this.renderWag(3)}
               {this.renderWag(4)}
               <TextField
-                hintText="(<--) some wags, then (-->) a review. "
+                hintText="<-- Leave some wags and a review."
                 hintStyle={{ hintStyle }}
                 multiLine={true}
                 value={this.state.reviewText}

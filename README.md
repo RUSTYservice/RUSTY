@@ -39,7 +39,7 @@ mongorestore -h ds111496.mlab.com:11496 -d heroku_q2r416hr -u SOME_USERNAME -p S
 >  * Set the preset2 variable equal to your custom name2
 
 3. Name your cloud
-Put your account name in variable : cloud_name, located in file: config/cloudinaryConfig.js  
+Put your account name in variable : cloud_name, located in file: config/cloudinaryConfig.js
 Make sure to give it the same name that you have set on cloudinary for your cloud name.
 
 

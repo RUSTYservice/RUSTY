@@ -1,40 +1,80 @@
 import React from 'react';
-import { BrowserRouter, Route, NavLink, Switch } from 'react-router-dom';
+import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
+import Paper from 'material-ui/Paper';
 import UserLogin from './UserLogin.jsx';
 
-const Login = ({ authenticateLogin }) => {
-  const linkTextStyle = {
-    fontFamily: 'Roboto, sans-serif',
-    display: 'inline'
-  };
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selected: 'petOwner',
+    };
+    this.onChange = this.onChange.bind(this);
+  }
 
-  return (
-    <BrowserRouter>
-      <div style={{whiteSpace: 'nowrap', marginTop: 15}}>
+  onChange(e, value) {
+    this.setState({ selected: value });
+  }
 
-        <h3 style={linkTextStyle}>Login as a </h3>
-        <NavLink
-            to="/login/business"
-            style={linkTextStyle}
-            activeStyle={{ fontWeight: 'bold' }}>
-            Business
-        </NavLink>
-        <h3 style={linkTextStyle}> or a </h3>
-          <NavLink
-            to="/login/petOwner"
-            style={linkTextStyle}
-            activeStyle={{ fontWeight: 'bold' }}>
-            Pet Owner
-          </NavLink>
-       <h3 style={linkTextStyle}>?</h3>
-        <Switch>
-          <Route path="/login/business" render={() => (<UserLogin userType="Business" authenticateLogin={authenticateLogin} />)} />
-          <Route path="/login/petOwner" render={() => (<UserLogin userType="Pet Owner" authenticateLogin={authenticateLogin} />)} />
-        </Switch>
-
+  render() {
+    const style = {
+      paper: {
+        height: 'auto',
+        width: 'auto',
+        padding: 25,
+        margin: 20,
+        textAlign: 'left',
+        display: 'inline-block',
+      },
+      linkText: {
+        fontFamily: 'Roboto, sans-serif',
+        display: 'inline',
+      },
+      radioButton: {
+        marginBottom: 16,
+      },
+      icon: {
+        fill: '#33691E',
+      },
+      paperContents: {
+        whiteSpace: 'nowrap',
+        marginTop: 15,
+        backgroundColor: 'white',
+      },
+    };
+    return (
+      <div>
+        <Paper style={style.paper} zDepth={5}>
+          <div style={style.paperContents}>
+            <RadioButtonGroup
+              name="loginType"
+              defaultSelected="petOwner"
+              onChange={this.onChange}
+            >
+              <RadioButton
+                iconStyle={style.icon}
+                value="business"
+                label="Business"
+                style={style.radioButton}
+              />
+              <RadioButton
+                iconStyle={style.icon}
+                value="petOwner"
+                label="Pet Owner"
+                style={style.radioButton}
+              />
+            </RadioButtonGroup>
+            <br />
+            {
+          this.state.selected === 'business' ?
+          (<UserLogin userType="Business" authenticateLogin={this.props.authenticateLogin} />) :
+          (<UserLogin userType="Pet Owner" authenticateLogin={this.props.authenticateLogin} />)
+            }
+          </div>
+        </Paper>
       </div>
-    </BrowserRouter>
-  );
-};
+    );
+  }
+}
 
 export default Login;

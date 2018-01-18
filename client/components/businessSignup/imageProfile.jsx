@@ -4,21 +4,19 @@ import CloudinaryVideoPlayer from 'cloudinary-video-player';
 
 
 class ImageProfileContainer extends React.Component {
-
-	constructor (props) {
+	constructor(props) {
 		super(props);
-		this.state ={
-			publicId : this.props.publicId // !!!!!!!!!!!!!!!!!!!!!!!!!
-		}
-	this.onClose = this.onClose.bind(this)
+		this.state = {
+			publicId : this.props.publicId,
+		};
+	this.onClose = this.onClose.bind(this);
 	}
 
-	onClose () {
-		this.props.turnOff('imageProfile')
+	onClose() {
+		this.props.turnOff('imageProfile');
 	}
 
 	render () {
-		console.log('props in imageProfile.jsx = ',this.props)
 		return (
 			<div>
 				<p onClick={this.onClose}> <a href="#" > undo </a> </p>

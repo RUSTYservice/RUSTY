@@ -5,38 +5,43 @@ const bcrypt = require('bcrypt');
 const addPetOwner = (data, callback) => {
   bcrypt.hash(data.password, 10, (err, hash) => {
     const petOwner = new db.PetOwner({
-      pet: data.pet,
-      username: data.username,
-      profileImg: data.profileImg,
+      pet: data.petName,
+      username: data.name,
+      profileImg: {
+        cloudinaryURL: data.image,
+      },
       email: data.email,
-      password: hash, // need to be hashing this
-      street: data.street,
-      city: data.city,
-      state: data.state,
+      password: hash,
       zip: data.zip,
     });
     writeToDatabase(petOwner, callback);
   });
 };
 
-const seedGallery = function (images) { // **************
+const seedGallery = function (images) {
   images.map(image=> {
     businessSchema.galleryImages.push(image)
   })
-} // **************
+}
 
 
 const addBusiness = (data, callback) => {
   bcrypt.hash(data.password, 10, (err, hash) => {
     const business = new db.Business({
-      galleryImages: data.gallery,
-      businessName: data.businessName,
+      galleryImages: {
+        cloudinaryURL: data.gallery,
+      },
+      businessName: data.name,
       email: data.email,
       password: hash,
-      profileImg: data.profileImg,
-      profileVideo: data.profileVideo,
+      profileImg: {
+        cloudinaryURL: data.image,
+      },
+      profileVideo: {
+        cloudinaryURL: data.video,
+      },
       phone: data.phone,
-      businessCategory: data.businessCategory,
+      businessCategory: data.category,
       street: data.street,
       city: data.city,
       state: data.state,
@@ -45,7 +50,6 @@ const addBusiness = (data, callback) => {
     writeToDatabase(business, callback);
   });
 };
-
 
 
 const addReview = (data, callback) => {
@@ -66,13 +70,13 @@ const addPromotion = (data, callback) => {
   writeToDatabase(promotion, callback);
 };
 
-const writeToDatabase = (document, callback) => {
-  document.save()
-    .then(function (newDocument) {
-      callback(newDocument);
+const writeToDatabase = (doc, callback) => {
+  doc.save()
+    .then((newDocument) => {
+      callback(null, newDocument);
     })
-    .catch(function (err) {
-      return console.error(err);
+    .catch((err) => {
+      callback(err, null);
     });
 };
 
@@ -118,7 +122,7 @@ const validateLogin = (attempt, stored, callback) => {
   });
 };
 
-// the eachAsync callback ought to be easily modularized...but i can't do that for some reason
+
 const fetchBusinessListings = (callback) => {
   const output = [];
   db.Business

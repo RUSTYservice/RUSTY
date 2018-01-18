@@ -20,7 +20,6 @@ class SearchResults extends React.Component {
   componentDidMount() {
     axios.get('/api/businessListings')
       .then((response) => {
-        console.log('SEARCH_RESULTS DID MOUNT:', response.data);
         this.addBusinesses(response.data);
       })
       .catch((error) => {
